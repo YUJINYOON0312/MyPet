@@ -39,7 +39,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests(authorize -> authorize
-			.antMatchers("/css/**","/images/**").permitAll()
+			.antMatchers("/css/**","/img/**").permitAll()
 			.antMatchers("/","/**","/sign-up").permitAll() //추가안하면 회원가입이 안됐음
 			.antMatchers("/admin/**").hasRole("ADMIN")	
 			.anyRequest().authenticated()

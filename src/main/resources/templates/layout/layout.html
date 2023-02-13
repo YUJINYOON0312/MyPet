@@ -11,11 +11,15 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <body id="layout">
     <header>
-   		<div class="wrap">
+   		<div class="wrap flex">
 
    					<!-- <p th:text="${#authentication.principal.name}"></p>
    					<p th:text="${#authentication.principal.mno}"></p> -->
-   			
+   				<div>
+   				<a href="/">
+   						<img src="/img/mypetLogo.png" style="width: 230px; padding-bottom: 10px;">
+   				</a>
+   				</div>
    				<div style="text-align: center;">
    					<a href="/sign-in" sec:authorize="isAnonymous()">로그인</a>
 					<a href="/sign-up" sec:authorize="isAnonymous()">회원가입</a>
