@@ -9,9 +9,6 @@
 </head>
 <body>
 <th:block th:insert="~{layout/layout :: header}"/>
-	<p>인덱스 페이지</p>
-	<p>나의 닉네임</p>
-	<p sec:authorize="isAuthenticated()" th:text="${#authentication.principal.nickName}"></p>
-	
+	<p>강아지 카테 페이지</p>
 </body>
 </html>

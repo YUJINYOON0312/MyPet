@@ -4,17 +4,24 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/commons/common.css">
+<link rel="stylesheet" href="/css/sign/sign-in.css">
 <th:block th:insert="~{layout/layout :: head}"/>
 <title>로그인</title>
 </head>
 
 <body>
 	<th:block th:insert="~{layout/layout :: header}"/>
-		<p>로그인 페이지</p>
-		<form action="/sign-in" method="post">
-			<input type="text" name="email" placeholder="이메일(ID)을 입력하세요">
-			<input type="password" name="pass" placeholder="비밀번호를 입력하세요">
-			<button>로그인</button>
-		</form>
+		<h1>로그인 페이지</h1>
+		<div class="login_box">
+			<form action="/sign-in" method="post">
+				<input type="text" name="email" placeholder="이메일(ID)을 입력하세요">
+				<input type="password" name="pass" placeholder="비밀번호를 입력하세요">
+				<a href="/sign-up" class="reg">회원가입</a>
+				<button class="log_btn">로그인</button>
+			</form>
+		</div>
+		<div th:if="error">
+  			<p id="valid" style="color: red; font-size:13px; text-align: center;"><span th:text="${exception}"></span></p>
+		</div>
 </body>
 </html>
