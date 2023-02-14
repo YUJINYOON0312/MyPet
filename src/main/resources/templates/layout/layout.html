@@ -17,20 +17,21 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
    						<img src="/img/mypetLogo.png" style="width: 230px; margin-top: 10px;">
    				</a>
    				</div>
-   				<div style="text-align: center;">
-   					<a href="/sign-in" sec:authorize="isAnonymous()">로그인</a>
-   					<a href="/sign-in" sec:authorize="isAnonymous()">소셜 로그인</a>
-					<a href="/sign-up" sec:authorize="isAnonymous()">회원가입</a>
-					<a href="/" sec:authorize="isAuthenticated()">내정보</a>
-					<a href="/logout" sec:authorize="isAuthenticated()">로그아웃</a>
-				</div>
-				<div>
-					<a href="/">강아지</a>
-					<a href="/">고양이</a>
-					<a href="/">소동물</a>
-					<a href="/">수중생물</a>
-					<a href="/">파충류</a>
-					<a href="/">조류</a>
+   				<div>
+	   				<div class="log-section">
+	   					<a href="/sign-in" sec:authorize="isAnonymous()">로그인</a>
+						<a href="/sign-up" sec:authorize="isAnonymous()">회원가입</a>
+						<a href="/" sec:authorize="isAuthenticated()">내정보</a>
+						<a href="/logout" sec:authorize="isAuthenticated()">로그아웃</a>
+					</div>
+					<div class="cate">
+						<a href="/">강아지</a>
+						<a href="/">고양이</a>
+						<a href="/">소동물</a>
+						<a href="/">수중생물</a>
+						<a href="/">파충류</a>
+						<a href="/">조류</a>
+					</div>
 				</div>
 		</div>
    	</header>

@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.log{
+	left: 30px;
+	top: 20px;
+    background-color: #fff;
+    width: 250px;
+    height: 130px;
+    border: 2px solid #aad5ff;
+    border-radius: 10px;
+    padding: 12px;
+    position: relative;
+}
+.log a{
+	margin: 5px 10px;
+	padding-top: 10px;
+	display: inline-block;
+    width: 200px;
+    height: 40px;
+    background-color: #aad5ff;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+.log p{
+	margin: 5px 10px;
+	padding-top: 10px;
+	display: inline-block;
+    width: 200px;
+    height: 40px;
+    background-color: #ff99cc;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
