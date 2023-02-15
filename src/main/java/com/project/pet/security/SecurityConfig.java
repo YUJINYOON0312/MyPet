@@ -8,19 +8,22 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.firewall.DefaultHttpFirewall;
 import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 
+import lombok.AllArgsConstructor;
+
 @EnableWebSecurity
 @Configuration
+@AllArgsConstructor
 public class SecurityConfig {
 
-	/*
-	 * @Bean public HiddenHttpMethodFilter httpMethodFilter() {
-	 * HiddenHttpMethodFilter hiddenHttpMethodFilter = new HiddenHttpMethodFilter();
-	 * return hiddenHttpMethodFilter; }
-	 */
+	private final AuthenticationSuccessHandler authSuccessHandler;
+	
+	private final AuthenticationFailureHandler authFailureHandler;
 	
 	@Bean
 	PasswordEncoder passEncoder() {
@@ -39,7 +42,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests(authorize -> authorize
-			.antMatchers("/css/**","/images/**").permitAll()
+			.antMatchers("/css/**","/img/**").permitAll()
 			.antMatchers("/","/**","/sign-up").permitAll() //추가안하면 회원가입이 안됐음
 			.antMatchers("/admin/**").hasRole("ADMIN")	
 			.anyRequest().authenticated()
@@ -49,8 +52,9 @@ public class SecurityConfig {
 					.loginProcessingUrl("/sign-in")//form안의 action 경로
 					.usernameParameter("email")
 					.passwordParameter("pass")
-					.defaultSuccessUrl("/") //로그인 성공시 이동 url
-					.failureUrl("/sign-in")//로그인 실패시 이동
+					//.defaultSuccessUrl("/") //로그인 성공시 이동 url
+					.successHandler(authSuccessHandler) //성공시 핸들러
+					.failureHandler(authFailureHandler)//실패시 핸드러
 					.permitAll()
 					)
 			.logout(logout -> logout

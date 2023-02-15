@@ -4,11 +4,19 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/commons/common.css">
+<link rel="stylesheet" href="/css/commons/index.css">
 <th:block th:insert="~{layout/layout :: head}"/>
 <title>인덱스</title>
 </head>
 <body>
 <th:block th:insert="~{layout/layout :: header}"/>
-	<p>인덱스 페이지</p>
+	<h1>인덱스 페이지</h1>
+	<div class="log">
+		<a sec:authorize="isAnonymous()" href="/sign-in">로그인</a>
+		<a sec:authorize="isAnonymous()" href="/sign-up">회원가입</a>
+		<p sec:authorize="isAuthenticated()" th:text="|${#authentication.principal.nickName} 님|">
+		</p>
+		<a sec:authorize="isAuthenticated()" href="/logout">로그아웃</a>
+	</div>
 </body>
 </html>
