@@ -1,5 +1,7 @@
 package com.project.pet.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.aspectj.apache.bcel.classfile.Module.Require;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,10 +26,14 @@ public class LogController {
 	
 	@GetMapping("/sign-in") //로그인
 	public String signin(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "exception",required = false) String exception, Model model) {
+			@RequestParam(value = "exception",required = false) String exception, Model model, HttpServletRequest request) {
 		//에러와 예외를 모델에 담아 뷰로
 		model.addAttribute("error",error);
 		model.addAttribute("exception",exception);
+		String uri = request.getHeader("Referer");
+		if(uri != null) {
+			request.getSession().setAttribute("prevPage", uri);
+		}
 		return "sign/signin";
 	}
 	

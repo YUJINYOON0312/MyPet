@@ -21,7 +21,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SecurityConfig {
 
-	private final AuthenticationSuccessHandler authSuccessHandler;
+	private final AuthenticationSuccessHandler loginSuccessHandler;
 	
 	private final AuthenticationFailureHandler authFailureHandler;
 	
@@ -53,7 +53,7 @@ public class SecurityConfig {
 					.usernameParameter("email")
 					.passwordParameter("pass")
 					//.defaultSuccessUrl("/") //로그인 성공시 이동 url
-					.successHandler(authSuccessHandler) //성공시 핸들러
+					.successHandler(loginSuccessHandler) //성공시 핸들러
 					.failureHandler(authFailureHandler)//실패시 핸드러
 					.permitAll()
 					)

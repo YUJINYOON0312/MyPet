@@ -7,8 +7,8 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public enum MyRole {
 	
-	USER("USER"),
-	ADMIN("ADMIN");
+	USER("ROLE_USER"),
+	ADMIN("ROLE_ADMIN");
 	
 	private final String roles;
 	//member entity의 메서드에서 사용 할 것
