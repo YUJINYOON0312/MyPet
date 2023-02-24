@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/commons/common.css">
+<link rel="stylesheet" href="/css/board/board.css">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+	$(document).ready(function () {
+    	$('#summernote').summernote({
+	        placeholder: '내용을 작성하세요',
+	        width: 1000,
+	        height: 300,
+       
+    	});
+	});
+</script>
+<th:block th:insert="~{layout/layout :: head}"/>
+<title>인덱스</title>
+</head>
+<body>
+<th:block th:insert="~{layout/layout :: header}"/>
+	<!-- <p>글쓰기 페이지</p> -->
+	<div>
+		<div>
+			<p>* 작성 유의사항 *</p>
+			<span>
+			1. 게시판의 성격과 맞지 않은 게시물은 이동 혹은 삭제 될 수 있습니다.
+			<br>
+			2. 특정 상품이나 업체를 과하게 홍보하거나 비방하는 글은 제재 대상입니다.
+			<br>
+			3. 불펌 게시물은 원작자의 요청이나 운영진에 의해 삭제 처리될 수 있습니다.
+			<br>
+			4. 음란물, 혐오, 정치, 저격글, 분란글 등 부적절한 게시물과 게시자는 엄격하게 조치합니다.
+			</span>
+		</div>
+		<form action="/board/reg" method="post">
+			<div class="tit-row">
+   				<span class="form-tit tit-tit">제목</span>
+   				<span><input type="text" name="title" placeholder="제목을 입력하세요"></span>
+   			</div>
+   			<div>
+   				<span class="form-tit">내용</span>
+   			</div>
+			<div>
+  				<span><textarea id="summernote" name="content"></textarea></span>
+  			</div>
+  			<div>
+  				<button>등록</button>
+  			</div>
+		</form>
+	</div>
+</body>
+</html>
